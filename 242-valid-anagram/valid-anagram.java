@@ -3,11 +3,15 @@ class Solution {
         if(s.length()!=t.length()){
             return false;
         }
-        char[]a=s.toCharArray();
-        char[]b=t.toCharArray();
-        Arrays.sort(a);
-        Arrays.sort(b);
-        for(int i=0;i<b.length;i++){
+        int a[]=new int[26];
+        int b[]=new int[26];
+        for(int i=0;i<s.length();i++){
+            int idx1=s.charAt(i)-'a';
+            int idx2=t.charAt(i)-'a';
+            a[idx1]++;
+            b[idx2]++;
+        }
+        for(int i=0;i<26;i++){
             if(a[i]!=b[i]) return false;
         }
         return true;
