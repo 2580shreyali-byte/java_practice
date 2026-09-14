@@ -3,16 +3,19 @@ class Solution {
         if(s.length()!=t.length()){
             return false;
         }
-        int a[]=new int[26];
-        int b[]=new int[26];
+        HashMap <Character,Integer> map=new HashMap<>();
         for(int i=0;i<s.length();i++){
-            int idx1=s.charAt(i)-'a';
-            int idx2=t.charAt(i)-'a';
-            a[idx1]++;
-            b[idx2]++;
+            map.put(s.charAt(i),map.getOrDefault(s.charAt(i),0)+1);
         }
-        for(int i=0;i<26;i++){
-            if(a[i]!=b[i]) return false;
+        for(int i=0;i<t.length();i++){
+            char ch=t.charAt(i);
+            if(map.containsKey(ch)==false){
+                return false;
+            }
+            map.put(ch,map.get(ch)-1);
+            if(map.get(ch)==0){
+                map.remove(ch);
+            }
         }
         return true;
     }
