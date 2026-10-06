@@ -1,9 +1,9 @@
 class Solution {
     public void nextPermutation(int[] arr) {
-        int p=-1;
         int n=arr.length;
+        int p=-1;
         for(int i=n-2;i>=0;i--){
-            if(arr[i]<arr[i+1]){
+            if(arr[i+1]>arr[i]){
                 p=i;
                 break;
             }
@@ -24,8 +24,8 @@ class Solution {
         arr[q]=temp;
         reverse(arr,p+1,n-1);
     }
-    public void reverse(int arr[],int a,int b){
-        for(int i=a,j=b;i<=j;i++,j--){
+    public void reverse(int arr[],int p,int q){
+        for(int i=p,j=q;i<=j;i++,j--){
             int temp=arr[i];
             arr[i]=arr[j];
             arr[j]=temp;
